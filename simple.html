@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的简单网页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #1890ff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .btn {
+            background: #1890ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #40a9ff;
+        }
+        #time {
+            font-size: 1.2em;
+            color: #666;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>欢迎访问</h1>
+            <p>这是一个简单的演示页面</p>
+        </header>
+
+        <div class="card">
+            <h2>当前时间</h2>
+            <div id="time">加载中...</div>
+            <button class="btn" onclick="updateTime()">刷新时间</button>
+        </div>
+
+        <div class="card">
+            <h2>简单计数器</h2>
+            <p>当前计数：<span id="counter">0</span></p>
+            <button class="btn" onclick="increaseCounter()">增加</button>
+        </div>
+    </div>
+
+    <script>
+        // 更新时间的函数
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('time').textContent = timeString;
+        }
+
+        // 计数器函数
+        let count = 0;
+        function increaseCounter() {
+            count++;
+            document.getElementById('counter').textContent = count;
+        }
+
+        // 页面加载时更新时间
+        updateTime();
+        // 每秒更新一次时间
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html> 
